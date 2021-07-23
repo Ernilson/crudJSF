@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Aleluia</title>
+</head>
+<body>
+	<h1>Glória a Deus!!!</h1>
+	
+	<h:form>
+	
+		<h:panelGrid columns="2">
+		
+				<h:outputText value="Digite seu Nome:"/>
+				<h:inputText value="#{cadastroController.cm.nome}"/>
+				<h:outputText value="Digite seu Endereço:"/>
+				<h:inputText value="#{cadastroController.cm.endereco}"/>
+				<h:outputText value="Digite seu Telefone:"/>
+				<h:inputText value="#{cadastroController.cm.fone}"/>
+				<h:outputText value="Digite seu Email:"/>
+				<h:inputText value="#{cadastroController.cm.email}"/>
+				<h:commandButton value="Cadastrar" action="#{cadastroController.salvaCadastro}"/>
+				
+			</h:panelGrid>	
+				
+	</h:form>
+	 
+	<h1>Lista de Cadastro</h1>
+	
+	<h:dataTable value="#{cadastroController.lsCm}" var="cad">
+	
+		<h:column>
+		<h:outputText value="#{cad.nome}"/>
+		</h:column>
+		<h:column>
+		<h:outputText value="#{cad.endereco}"/>
+		</h:column>
+		<h:column>
+		<h:outputText value="#{cad.fone}"/>
+		</h:column>
+		<h:column>
+		<h:outputText value="#{cad.email}"/>
+		</h:column>	
+		
+	</h:dataTable>
+	
+</body>
+</html>
