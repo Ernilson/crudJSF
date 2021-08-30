@@ -18,12 +18,13 @@ public class CadastroDAO {
 
     public boolean incluir(CadastroModel cm) {
         conn = Conection.conectaMysql();
+        
         try {
-            String sql = "insert into cadastro(nome,endereco,fone,email)values(?,?,?,?)";
+            String sql = "insert into tabcadastro(nome,endereco,telefone,email)values(?,?,?,?)";
             pst = conn.prepareStatement(sql);
             pst.setString(1, cm.getNome());
             pst.setString(2, cm.getEndereco());
-            pst.setString(3, cm.getFone());
+            pst.setString(3, cm.getTelefone());
             pst.setString(4, cm.getEmail());
 
             pst.execute();
@@ -39,11 +40,11 @@ public class CadastroDAO {
     public boolean atualizar(CadastroModel cm) {
     	conn = Conection.conectaMysql();
         try {
-            String sql = "update cadastro set nome=?, endereco=?, fone=?, email=? where id_c =?";
+            String sql = "update tabcadastro set nome=?, endereco=?, telefone=?, email=? where id_c =?";
             pst = conn.prepareStatement(sql);            
             pst.setString(1, cm.getNome());
             pst.setString(2, cm.getEndereco());
-            pst.setString(3, cm.getFone());
+            pst.setString(3, cm.getTelefone());
             pst.setString(4, cm.getEmail());
             pst.setInt(5, cm.getId());           
 
@@ -65,7 +66,7 @@ public class CadastroDAO {
             return new CadastroModel();
         }
         try {
-            String sql = ("select * from cadastro where id_c =" + id);
+            String sql = ("select * from tabcadastro where id_c =" + id);
             pst = conn.prepareStatement(sql);
             rs = pst.executeQuery();
             rs.next();
@@ -73,7 +74,7 @@ public class CadastroDAO {
             cm.setId(rs.getInt("id_c"));
             cm.setNome(rs.getString("NOME"));
             cm.setEndereco(rs.getString("ENDERECO"));
-            cm.setFone(rs.getString("FONE"));
+            cm.setTelefone(rs.getString("TELEFONE"));
             cm.setEmail(rs.getString("Email"));
            
             pst.close();
@@ -85,12 +86,12 @@ public class CadastroDAO {
 
         return null;
     }
-//
 
+    //Remomver
     public boolean apagar(CadastroModel cont) {
     	conn = Conection.conectaMysql();
         try {
-            String sql = "delete from cadastro where id_c = ?";
+            String sql = "delete from tabcadastro where id_c = ?";
             pst = conn.prepareStatement(sql);
             pst.setInt(1, (int) cont.getId());
             pst.execute();
@@ -106,16 +107,16 @@ public class CadastroDAO {
     public List<CadastroModel> listar() throws Exception {
     	conn = Conection.conectaMysql();
         try {
-            String sql = "select * from cadastro";
+            String sql = "select * from tabcadastro";
             pst = conn.prepareStatement(sql);
             rs = pst.executeQuery();
             List<CadastroModel> lista = new ArrayList<CadastroModel>();
             while (rs.next()) {
             	CadastroModel cm = new CadastroModel();
-            	cm.setId(rs.getInt("id_c"));
+            	cm.setId(rs.getInt("id"));
                 cm.setNome(rs.getString("NOME"));
                 cm.setEndereco(rs.getString("ENDERECO"));
-                cm.setFone(rs.getString("FONE"));
+                cm.setTelefone(rs.getString("TELEFONE"));
                 cm.setEmail(rs.getString("Email"));  
                 lista.add(cm);
             }
@@ -132,16 +133,16 @@ public class CadastroDAO {
     public List<CadastroModel> pesquisaPorNome(String nome) throws SQLException {
         conn = Conection.conectaMysql();
         try {
-            String sql = ("select * from cadastro where nome like " + nome);
+            String sql = ("select * from tabcadastro where nome like " + nome);
             pst = conn.prepareStatement(sql);
             rs = pst.executeQuery();
             List<CadastroModel> lsCad = new ArrayList<>();
             while (rs.next()) {
             	CadastroModel cm = new CadastroModel();
-            	cm.setId(rs.getInt("id_c"));
+            	cm.setId(rs.getInt("id"));
                 cm.setNome(rs.getString("NOME"));
                 cm.setEndereco(rs.getString("ENDERECO"));
-                cm.setFone(rs.getString("FONE"));
+                cm.setTelefone(rs.getString("TELEFONE"));
                 cm.setEmail(rs.getString("Email"));
             
                 lsCad.add(cm);

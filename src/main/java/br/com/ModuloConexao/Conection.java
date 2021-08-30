@@ -24,13 +24,19 @@ public class Conection {
 	        try {
 	            Class.forName("com.mysql.cj.jdbc.Driver");
 	            try {
-	                con = DriverManager.getConnection(url, usuario, senha);
+	            	if (con == null) {
+	            		con = DriverManager.getConnection(url, usuario, senha);
+					}
+	            	System.out.println("Conexao realizada com sucesso!!!");
+	            	
 	            } catch (SQLException ex) {
 	                System.out.println("Url, senha ou usuario incorretos");
 	            }
 	        } catch (ClassNotFoundException ex) {
 	            System.out.println("Drive não encontrado");
 	        }
+	        
+	             
 	        return con;
 	    }
 

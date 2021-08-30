@@ -12,7 +12,7 @@ public class CadastroModel implements Serializable {
 	private int id;
 	private String nome;
 	private String endereco;
-	private String fone;
+	private String telefone;
 	private String email;	
 	
 	public CadastroModel() {
@@ -20,12 +20,12 @@ public class CadastroModel implements Serializable {
 	}
 	
 
-	public CadastroModel(int id, String nome, String endereco, String fone, String email) {
+	public CadastroModel(int id, String nome, String endereco, String telefone, String email) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.endereco = endereco;
-		this.fone = fone;
+		this.telefone = telefone;
 		this.email = email;
 	}
 
@@ -53,12 +53,12 @@ public class CadastroModel implements Serializable {
 		this.endereco = endereco;
 	}
 
-	public String getFone() {
-		return fone;
+	public String getTelefone() {
+		return telefone;
 	}
 
-	public void setFone(String fone) {
-		this.fone = fone;
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 	
 	public String getEmail() {
@@ -93,13 +93,13 @@ public class CadastroModel implements Serializable {
 		return true;
 	}
 
-
 	@Override
 	public String toString() {
-		return "CadastroModel [id=" + id + ", nome=" + nome + ", endereco=" + endereco + ", fone=" + fone + ", email="
-				+ email + "]";
+		return "CadastroModel [id=" + id + ", nome=" + nome + ", endereco=" + endereco + ", telefone=" + telefone
+				+ ", email=" + email + "]";
 	}
-	
+
+
 	
 
 

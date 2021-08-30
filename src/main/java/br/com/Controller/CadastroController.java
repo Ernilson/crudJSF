@@ -45,7 +45,7 @@ public class CadastroController implements Serializable{
 	private void limpaCampos() {
 		cm.setNome("");
 		cm.setEndereco("");
-		cm.setFone("");
+		cm.setTelefone("");
 		cm.setEmail("");
 	}
 	
@@ -55,6 +55,7 @@ public class CadastroController implements Serializable{
 	public void setCm(CadastroModel cm) {
 		this.cm = cm;
 	}
+	
 	public List<CadastroModel> getLsCm() throws Exception {
 		CadastroDAO cdao = new CadastroDAO();
         lsCm = new ArrayList<>(cdao.listar());
